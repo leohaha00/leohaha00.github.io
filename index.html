@@ -101,6 +101,9 @@
 document.ready = function() {
     $(window).resize();
     updateNumbers();
+	$("#atn").click(function(){
+		alert(1);
+	});
 };
 
 
@@ -141,6 +144,6 @@ function updateNumbers() {
       </div>
       <div class="seconds">15 hours 24 minutes 30 seconds</div>
     </div>
-   
+	<div><input type="button" id="atn">点击</div>
 
 </body></html>
