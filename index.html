@@ -113,6 +113,7 @@
   src:url('./jscss/HYLiHeiJ.ttf') format('woff');
 }
 
+
 .pause { position: absolute; z-index: 10000; bottom: 10px; right: 10px;}
 .pause a { width:30px; height:30px; background:url(http://mat1.gtimg.com/zj/maxbao/reai/imgs/units-icons.png) 0 0 no-repeat; display:block; background-size: 90px auto;}
 .pause a.on { -webkit-animation:reverseRotataZ 1.2s linear infinite}
@@ -132,6 +133,29 @@
    </style>
     <meta http-equiv="X-UA-Compatible" content="IE=8"> 
     <title>记录爱你的每一天</title> 
+
+
+  </head> 
+  <body style="background-color: #fbfdfd"> 
+  <div class="pause">
+    <a class="on" href="#">
+    </a>
+    <span>开启</span>
+</div>
+<div class="audio">
+    <audio src="http://mat1.gtimg.com/ln/images/2016zt/12Dec/dlsdbm/music.mp3"  controls="controls" preload="auto" autoplay="autoplay" id="audio" loop></audio>
+</div>
+		
+
+	<div class="container">
+	  <div class="words">I LOVE YOU</div>
+	  <div class="days">
+		<span class="days-number">365</span>
+		<span class="days-label">days</span>
+	  </div>
+	  <div class="seconds">15 hours 24 minutes 30 seconds</div>
+	</div>
+</body>
     <script src="./jscss/jquery-1.8.3.min.js" type="text/javascript"></script> 
     <script type="text/javascript">
 
@@ -163,8 +187,9 @@ function updateNumbers() {
     setTimeout("updateNumbers()", 1000);
 	
 }		
-
-//播放器
+</script> 
+<script>
+	//播放器
 (function($) {
      $(document).ready(function() {
         var musicControl = function(obj){
@@ -205,7 +230,7 @@ function updateNumbers() {
                 })
         });
 })(jQuery);
-
+</script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
 <script> 
      //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以 
@@ -216,27 +241,4 @@ function updateNumbers() {
         document.getElementById('video').play(); //视频自动播放
     }, false); 
 </script>
-</script> 
-
-  </head> 
-  <body style="background-color: #fbfdfd">   
-  <div class="pause">
-    <a class="on" href="#">
-    </a>
-    <span>开启</span>
-</div>
-<div class="audio">
-    <audio src="http://mat1.gtimg.com/ln/images/2016zt/12Dec/dlsdbm/music.mp3"  controls="controls" preload="auto" autoplay="autoplay" id="audio" loop></audio>
-</div>
-  
-		
-
-	<div class="container">
-	  <div class="words">I LOVE YOU</div>
-	  <div class="days">
-		<span class="days-number">365</span>
-		<span class="days-label">days</span>
-	  </div>
-	  <div class="seconds">15 hours 24 minutes 30 seconds</div>
-	</div>
-</body></html>
+</html>
