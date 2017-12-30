@@ -24,6 +24,7 @@ html,body,.swiper-container,.swiper-slide{
    html,body{
        height: 100%;
    }
+   /*文字，年月日*/
       .words {
     font-size: 65px;
     font-family: 'Valentine', cursive;
@@ -98,6 +99,7 @@ html,body,.swiper-container,.swiper-slide{
     align-items: center;
 }
 
+/*文字*/
 @font-face {
   font-family: 'Regular';
   font-style: normal;
@@ -136,7 +138,7 @@ html,body,.swiper-container,.swiper-slide{
   src:url('./jscss/HYLiHeiJ.ttf') format('woff');
 }
 
-
+/*音频*/
 .pause { position: absolute; z-index: 10000; bottom: 10px; right: 10px;}
 .pause a { width:30px; height:30px; background:url(./photo/units-icons.png) 0 0 no-repeat; display:block; background-size: 90px auto;}
 .pause a.on { -webkit-animation:reverseRotataZ 1.2s linear infinite}
@@ -154,7 +156,7 @@ html,body,.swiper-container,.swiper-slide{
 }
 .audio{position: absolute; z-index:10;  visibility: hidden; opacity: 0; left: 0px; top:0px; width: 100px ; height: 30px;}
 
-    /*漂浮*/
+    /*漂浮-图片*/
 #suspend{position:relative; width:85%; height:250px;  margin:10px auto 0; overflow:hidden; }
 #suspend a{ position:absolute; color:#f71b45; text-decoration:none; top:300px; display:block; border:solid 1px #f71b45; background:#fff; filter:alpha(opacity:30); opacity:1; font-size:14px; padding:3px 5px; font-family:arial;}
 #suspend a:hover { filter:alpha(opacity:100); opacity:1; font-weight:bold; font-size:16px; }
@@ -170,7 +172,7 @@ html,body,.swiper-container,.swiper-slide{
 			<span>开启</span>
 		</div>
 		<div class="audio">
-			<audio src="http://mat1.gtimg.com/ln/images/2016zt/12Dec/dlsdbm/music.mp3"  controls="controls" preload="auto" autoplay="autoplay" id="audio" loop></audio>
+			<audio src="./jscss/1.mp3"  controls="controls" preload="auto" autoplay="autoplay" id="audio" loop></audio>
 		</div>
 <div class="swiper-container swiper-container-vertical">
   <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
@@ -220,137 +222,140 @@ html,body,.swiper-container,.swiper-slide{
 </div>
 </div>
 
-</body>
-
+<!--js-->
 <script type="text/javascript">
-var mySwiper = new Swiper('.swiper-container', {
-    direction: 'vertical',
-	mousewheel: true,
-	watchSlidesProgress: true,
-	on:{
-	  init: function() {
-		this.myIndex = 0;//activeIndex在滑动到一半时会切换，改用滑动完再切换的myIndex
-	  },
-	  progress: function() {
-		for (var i = 0; i < this.slides.length; i++) {
-			var slide=this.slides.eq(i);
-			var progress = this.slides[i].progress;
-			var translate, boxShadow;
-			translate = progress * this.height * 0.8;
-			scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
-			if (i == this.myIndex) {
-				slide.transform('translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')');
-				slide.css({'z-index':0,'boxShadow':'0px 0px 10px rgba(0,0,0,.5)'});
-			}
-		}
-	},
-	transitionEnd: function() {
-		this.myIndex = this.activeIndex;
-		for (var i = 0; i < this.slides.length; i++) {
-		var slide=this.slides.eq(i);
-		slide.transform('');
-		slide.css('z-index',1);
-		}
-		this.mousewheel.enable();
-	},
-	setTransition: function(speed) {
-		for (var i = 0; i < this.slides.length; i++) {
-			var slide=this.slides.eq(i);
-			slide.transition(speed + 'ms');
-		}
-		this.mousewheel.disable();
-	}
-	}
-});
-</script>
-
-<script src="./jscss/jquery-1.8.3.min.js" type="text/javascript"></script> 
-    <script type="text/javascript">
-
-document.ready = function() {
-    $(window).resize();
-    updateNumbers();
-};
-
-
-function updateNumbers() {
-		//"2017-01-02 19:00:00";  
-    var start_time = 1483354800000;
-    var duration = parseInt((Date.now()- start_time)/1000);
-    var seconds = duration % 60;
-    if (seconds < 10)
-        seconds = "0" + seconds;
-    duration = parseInt(duration / 60);
-    var minutes = duration % 60;
-    if (minutes < 10)
-        minutes = "0" + minutes;
-    duration = parseInt(duration / 60);
-    var hours = duration % 24;
-    if (hours < 10)
-        hours = "0" + hours;
-    duration = parseInt(duration / 24);
-    var days = duration;
-    $('.days-number').text("" + days);
-    $('.seconds').text(hours + " hours " + minutes + " minutes " + seconds + " seconds");
-    setTimeout("updateNumbers()", 1000);
-	
-}		
-</script> 
-<script>
-	//播放器
-(function($) {
-     $(document).ready(function() {
-        var musicControl = function(obj){
-        var classname = $.trim(obj.attr('class'));
-        //alert(classname);
-        if (classname == 'on')
-        {
-            document.getElementById('audio').pause();
-            obj.removeClass('on').addClass('off');
-            obj.siblings('span').text('关闭');
-            $('.pause span').addClass('z-show');
-            $('.music-icon').removeClass('active');
-            setTimeout(function(){
-                $('.pause span').removeClass('z-show');
-            },500);
-        } else if (classname == 'off')
-        {
-            document.getElementById('audio').play();
-            obj.removeClass('off').addClass('on');
-            obj.siblings('span').text('开启');
-            $('.music-icon').addClass('active');
-            $('.pause span').addClass('z-show');
-            setTimeout(function(){
-                $('.pause span').removeClass('z-show');
-            },500);
-        };
-        return false;
-    }
-    $('.pause a').click(function ()
-    {
-        musicControl($(this));
+    var mySwiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        mousewheel: true,
+        watchSlidesProgress: true,
+        on:{
+            init: function() {
+                this.myIndex = 0;//activeIndex在滑动到一半时会切换，改用滑动完再切换的myIndex
+            },
+            progress: function() {
+                for (var i = 0; i < this.slides.length; i++) {
+                    var slide=this.slides.eq(i);
+                    var progress = this.slides[i].progress;
+                    var translate, boxShadow;
+                    translate = progress * this.height * 0.8;
+                    scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+                    if (i == this.myIndex) {
+                        slide.transform('translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')');
+                        slide.css({'z-index':0,'boxShadow':'0px 0px 10px rgba(0,0,0,.5)'});
+                    }
+                }
+            },
+            transitionEnd: function() {
+                this.myIndex = this.activeIndex;
+                for (var i = 0; i < this.slides.length; i++) {
+                    var slide=this.slides.eq(i);
+                    slide.transform('');
+                    slide.css('z-index',1);
+                }
+                this.mousewheel.enable();
+            },
+            setTransition: function(speed) {
+                for (var i = 0; i < this.slides.length; i++) {
+                    var slide=this.slides.eq(i);
+                    slide.transition(speed + 'ms');
+                }
+                this.mousewheel.disable();
+            }
+        }
     });
-    var audio = document.getElementById('audio');
+</script>
+<script type="text/javascript">
+
+    document.ready = function() {
+        $(window).resize();
+        updateNumbers();
+    };
+
+
+    function updateNumbers() {
+        //"2017-01-02 19:00:00";
+        var start_time = 1483354800000;
+        var duration = parseInt((Date.now()- start_time)/1000);
+        var seconds = duration % 60;
+        if (seconds < 10)
+            seconds = "0" + seconds;
+        duration = parseInt(duration / 60);
+        var minutes = duration % 60;
+        if (minutes < 10)
+            minutes = "0" + minutes;
+        duration = parseInt(duration / 60);
+        var hours = duration % 24;
+        if (hours < 10)
+            hours = "0" + hours;
+        duration = parseInt(duration / 24);
+        var days = duration;
+        $('.days-number').text("" + days);
+        $('.seconds').text(hours + " hours " + minutes + " minutes " + seconds + " seconds");
+        setTimeout("updateNumbers()", 1000);
+
+    }
+</script>
+<script type="text/javascript">
+    document.write("<scr"+"ipt src=\"./jscss/jquery-1.8.3.min.js\"></sc"+"ript>")
+</script>
+<script>
+    //播放器
+    (function($) {
+        $(document).ready(function() {
+            var musicControl = function(obj){
+                var classname = $.trim(obj.attr('class'));
+                //alert(classname);
+                if (classname == 'on')
+                {
+                    document.getElementById('audio').pause();
+                    obj.removeClass('on').addClass('off');
+                    obj.siblings('span').text('关闭');
+                    $('.pause span').addClass('z-show');
+                    $('.music-icon').removeClass('active');
+                    setTimeout(function(){
+                        $('.pause span').removeClass('z-show');
+                    },500);
+                } else if (classname == 'off')
+                {
+                    document.getElementById('audio').play();
+                    obj.removeClass('off').addClass('on');
+                    obj.siblings('span').text('开启');
+                    $('.music-icon').addClass('active');
+                    $('.pause span').addClass('z-show');
+                    setTimeout(function(){
+                        $('.pause span').removeClass('z-show');
+                    },500);
+                };
+                return false;
+            }
+            $('.pause a').click(function ()
+            {
+                musicControl($(this));
+            });
+            var audio = document.getElementById('audio');
             audio.play();
             $(document).one("touchstart",
-                function() {
-                    audio.play()
-                })
+                    function() {
+                        audio.play()
+                    })
         });
-})(jQuery);
+    })(jQuery);
 </script>
-<script src="./jscss/jweixin-1.0.0.js"></script> 
-<script> 
-     //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以 
-     document.getElementById('idName').play(); 
-    //微信必须加入Weixin JSAPI的WeixinJSBridgeReady才能生效 
-    document.addEventListener("WeixinJSBridgeReady", function () { 
-        document.getElementById('idName').play(); 
+<script>
+    //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以
+    document.getElementById('idName').play();
+    //微信必须加入Weixin JSAPI的WeixinJSBridgeReady才能生效
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        document.getElementById('idName').play();
         document.getElementById('video').play(); //视频自动播放
-    }, false); 
+    }, false);
 </script>
 <script type="text/javascript">
-    window.onload=function()
+    $(function(){
+        setTimeout('floatPic()',2000);
+
+    });
+    function floatPic()
     {
         var oDiv=document.getElementById('suspend');
         var aA=oDiv.getElementsByTagName('a');
@@ -423,4 +428,11 @@ function updateNumbers() {
     };
 
 </script>
+
+<script type="text/javascript">
+    document.write("<scr"+"ipt src=\"./jscss/jweixin-1.0.0.js\"></sc"+"ript>")
+</script>
+</body>
+
+
 </html>
