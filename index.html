@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>记录爱你的每一天</title>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="viewport" content="initial-scale=1">
+<link rel="stylesheet" href="https://p1vpeo445.bkt.clouddn.com/swiper.min.css">
+<script src="https://p1vpeo445.bkt.clouddn.com/swiper.min.js.下载"></script>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+html,body,.swiper-container,.swiper-slide{
+	height:100%;
+}
+.swiper-slide {
+	  overflow:hidden;
+}
+.swiper-slide img{
+	width:100%;
+	height:100%;
+}
+
+   html,body{
+       height: 100%;
+   }
+   /*文字，年月日*/
+      .words {
+    font-size: 65px;
+    font-family: 'Valentine', cursive;
+    width: auto;
+    text-align: center;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(248, 10, 38)), to(rgb(250, 167, 176)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+          margin-top:20px;
+}
+   .days {
+    font-size: 216px;
+    font-family: 'Rye', cursive;
+    width: auto;
+    text-align: center;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(248, 10, 38)), to(rgb(250, 167, 176)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+       margin-top:-100px;
+}
+	.days-number{
+	font-size: 110px;
+    font-family: 'HYLiHeiJ', cursive;
+    width: auto;
+    text-align: center;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(248, 10, 38)), to(rgb(250, 167, 176)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+        margin-top:20px;
+    }
+
+.days-label {
+    display: block;
+    margin-top: -50px;
+    font-size: 70px;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(248, 10, 38)), to(rgb(250, 167, 176)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.seconds {
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: "Monda_bo", Georgia, sans-serif;
+    width: auto;
+    text-align: center;
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(248, 10, 38)), to(rgb(250, 167, 176)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.seconds-label {
+     margin-top: 32px;
+    font-size: 32px;
+    font-family: "Monda_no", Georgia, sans-serif;
+    width: auto;
+    text-align: center; 
+	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(248, 10, 38)), to(rgb(250, 167, 176)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 300px 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items: center;
+}
+
+#myContent{
+    position:absolute;
+    left:20px;
+    top:30px;
+    overflow:hidden;
+    text-shadow: 1px 1px 1px #000;
+    font-family: 'chi', cursive;
+    font-style:italic;
+    font-weight:500;
+    font-size:23px;
+    color:#f70895;
+}
+
+/*文字*/
+@font-face {
+  font-family: 'Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rye Regular'), local('Rye-Regular'), url('https://p1vpeo445.bkt.clouddn.com/text1.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Rye';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rye Regular'), local('Rye-Regular'), url('https://p1vpeo445.bkt.clouddn.com/Clockopia.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Monda_no';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Monda'), local('Monda-Regular'), url('https://p1vpeo445.bkt.clouddn.com/Monda-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Monda_bo';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Monda Bold'), local('Monda-Bold'), url('https://p1vpeo445.bkt.clouddn.com/Monda-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Valentine';
+  font-style: normal;
+  font-weight: 400;
+  src:url('https://p1vpeo445.bkt.clouddn.com/Clb-Valentine.ttf') format('woff');
+}
+@font-face {
+  font-family: 'HYLiHeiJ';
+  font-style: normal;
+  font-weight: 400;
+  src:url('https://p1vpeo445.bkt.clouddn.com/HYLiHeiJ.ttf') format('woff');
+}
+@font-face {
+    font-family: 'chi';
+    font-style: normal;
+    font-weight: 400;
+    src:url('https://p1vpeo445.bkt.clouddn.com/chinese.ttf') format('woff');
+}
+
+/*音频*/
+.pause { position: absolute; z-index: 10000; bottom: 10px; right: 10px;}
+.pause a { width:30px; height:30px; background:url(https://p1vpeo445.bkt.clouddn.com/units-icons.png) 0 0 no-repeat; display:block; background-size: 90px auto;}
+.pause a.on { -webkit-animation:reverseRotataZ 1.2s linear infinite}
+.pause a.off { }
+.pause  span{ color: #fff; font-size: 16px; position:absolute; left:-40px; top:5px; text-shadow:1px 1px 1px #000; letter-spacing:2px; -webkit-transition:all .2s linear; opacity:0; -webkit-transform:translateX(-20px) }
+.pause  span.z-show { opacity:1; -webkit-transform:translateX(0px)}
+.coffee-steam-box { -webkit-transform:translate(-40px,-40px)}
+@-webkit-keyframes reverseRotataZ {
+   0% {
+        -webkit-transform:rotateZ(0deg)
+    }
+    100% {
+        -webkit-transform:rotateZ(-360deg)
+    }
+}
+.audio{position: absolute; z-index:10;  visibility: hidden; opacity: 0; left: 0px; top:0px; width: 100px ; height: 30px;}
+
+    /*漂浮-图片*/
+#suspend{position:relative; width:85%; height:250px;  margin:10px auto 0; overflow:hidden; }
+#suspend a{ position:absolute; color:#f71b45; text-decoration:none; top:300px; display:block; border:solid 1px #f71b45; background:#fff; filter:alpha(opacity:30); opacity:1; font-size:14px; padding:3px 5px; font-family:arial;}
+#suspend a:hover { filter:alpha(opacity:100); opacity:1; font-weight:bold; font-size:16px; }
+#showPic{position:relative; color:#f71b45; display:block; border:solid 0px #f71b45; background:#fff;width:100%;height:100%;}
+#showPicPath{width: 100%;height: 100%;}
+</style>
+</head>
+<body>
+<div style="max-width:640px; margin:0 auto; height:100%;">
+		<div class="pause">
+			<a class="on" href="#">
+			</a>
+			<span>开启</span>
+		</div>
+		<div class="audio">
+			<audio src="https://p1vpeo445.bkt.clouddn.com/1.mp3"  controls="controls" preload="auto" autoplay="autoplay" id="audio" loop></audio>
+		</div>
+<div class="swiper-container swiper-container-vertical">
+  <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+      <div class="swiper-slide swiper-slide-active" style="height: 447px; z-index: 0; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px; transition-duration: 0ms; transform: translate3d(0px, 0px, 0px) scale(1);background: url(https://p1vpeo445.bkt.clouddn.com/backgroud.png)">
+          <div class="container">
+              <div class="words">I LOVE YOU</div>
+              <div class="days">
+                  <span class="days-number">365</span>
+                  <span class="days-label">days</span>
+              </div>
+              <div class="seconds">15 hours 24 minutes 30 seconds</div>
+          </div>
+      </div>
+
+      <div class="swiper-slide swiper-slide-next" style="height: 447px; transition-duration: 0ms; z-index: 1; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;background: url(https://p1vpeo445.bkt.clouddn.com/backgroud.png)">
+          <div id="myContent">
+              <span id="blink" style="display: none;">_</span></div>
+          <div id="contentToWrite" style="display:none">
+              ---亲爱的璇宝贝, <br>
+              新年快乐，本命年快乐，<br>
+              最重要的事是一周年快乐！！！ <br>
+              2017年最开心的事情是认识了<br>
+              可爱的你，温柔的你！<br>
+              2018年最想做的事是与你继续携手，<br>
+              共同经历生活中的小波澜，<br>
+              迎接属于我们的小确幸。<br>
+              你的好值得我变得更好，<br>
+              我的好希望成为你的宝。<br>
+              不想束缚别人，那是别人的自由，我的洒脱，<br>
+              却想紧紧抱住你，那是上天的恩赐，我的所求。<br>
+              尊重不易的缘分，记录美好的人生。<br>
+              ------------爱你的稳哥<br>
+              注:这是我们网上的家，一期工程略简陋哈，有时间重新装修，并会持续跟新...<br>
+          </div>
+      </div>
+    <div class="swiper-slide" style="height: 447px; transition-duration: 0ms; z-index: 1; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;background: url(https://p1vpeo445.bkt.clouddn.com/bg1.jpg)">
+        <div id="main">
+            <div id="suspend">
+                <a href="#">第一次语音</a>
+                <a href="#">完美侧颜</a>
+                <a href="#">气质</a>
+                <a href="#">小傲娇</a>
+                <a href="#">接地气</a>
+                <a href="#">我的日常</a>
+                <a href="#">可爱</a>
+                <a href="#">才华</a>
+                <a href="#">扬大校花</a>
+                <a href="#">一起可爱</a>
+                <a href="#">你的丑照</a>
+                <a href="#">巨星</a>
+                <a href="#">你拍的我</a>
+                <a href="#">我拍的你</a>
+                <a href="#">旅行</a>
+                <a href="#">第一合照</a>
+                <a href="#">意大利</a>
+                <a href="#">这波操作我服</a>
+                <a href="#">母亲节</a>
+                <a href="#">薰衣草</a>
+                <a href="#">唱歌</a>
+                <a href="#">这张我被p的好</a>
+            </div>
+            <div id="showPic">
+                <img id="showPicPath" src="https://p1vpeo445.bkt.clouddn.com/bg1.jpg"/>
+            </div>
+        </div>
+	</div>
+
+  </div>
+</div>
+</div>
+
+<!--js-->
+<script type="text/javascript">
+    var mySwiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        mousewheel: true,
+        watchSlidesProgress: true,
+        on:{
+            init: function() {
+                this.myIndex = 0;//activeIndex在滑动到一半时会切换，改用滑动完再切换的myIndex
+            },
+            progress: function() {
+                for (var i = 0; i < this.slides.length; i++) {
+                    var slide=this.slides.eq(i);
+                    var progress = this.slides[i].progress;
+                    var translate, boxShadow;
+                    translate = progress * this.height * 0.8;
+                    scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+                    if (i == this.myIndex) {
+                        slide.transform('translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')');
+                        slide.css({'z-index':0,'boxShadow':'0px 0px 10px rgba(0,0,0,.5)'});
+                    }
+                }
+            },
+            transitionEnd: function() {
+                this.myIndex = this.activeIndex;
+                for (var i = 0; i < this.slides.length; i++) {
+                    var slide=this.slides.eq(i);
+                    slide.transform('');
+                    slide.css('z-index',1);
+                }
+                this.mousewheel.enable();
+            },
+            setTransition: function(speed) {
+                for (var i = 0; i < this.slides.length; i++) {
+                    var slide=this.slides.eq(i);
+                    slide.transition(speed + 'ms');
+                }
+                this.mousewheel.disable();
+            }
+        }
+    });
+</script>
+<script type="text/javascript">
+
+    document.ready = function() {
+        $(window).resize();
+        updateNumbers();
+    };
+
+
+    function updateNumbers() {
+        //"2017-01-02 19:00:00";
+        var start_time = 1483354800000;
+        var duration = parseInt((Date.now()- start_time)/1000);
+        var seconds = duration % 60;
+        if (seconds < 10)
+            seconds = "0" + seconds;
+        duration = parseInt(duration / 60);
+        var minutes = duration % 60;
+        if (minutes < 10)
+            minutes = "0" + minutes;
+        duration = parseInt(duration / 60);
+        var hours = duration % 24;
+        if (hours < 10)
+            hours = "0" + hours;
+        duration = parseInt(duration / 24);
+        var days = duration;
+        $('.days-number').text("" + days);
+        $('.seconds').text(hours + " hours " + minutes + " minutes " + seconds + " seconds");
+        setTimeout("updateNumbers()", 1000);
+
+    }
+</script>
+<script type="text/javascript" src="https://p1vpeo445.bkt.clouddn.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="https://p1vpeo445.bkt.clouddn.com/text.js"></script>
+<script type="text/javascript">
+    writeContent(true);
+</script>
+<script>
+    //播放器
+    (function($) {
+        $(document).ready(function() {
+            var musicControl = function(obj){
+                var classname = $.trim(obj.attr('class'));
+                //alert(classname);
+                if (classname == 'on')
+                {
+                    document.getElementById('audio').pause();
+                    obj.removeClass('on').addClass('off');
+                    obj.siblings('span').text('关闭');
+                    $('.pause span').addClass('z-show');
+                    $('.music-icon').removeClass('active');
+                    setTimeout(function(){
+                        $('.pause span').removeClass('z-show');
+                    },500);
+                } else if (classname == 'off')
+                {
+                    document.getElementById('audio').play();
+                    obj.removeClass('off').addClass('on');
+                    obj.siblings('span').text('开启');
+                    $('.music-icon').addClass('active');
+                    $('.pause span').addClass('z-show');
+                    setTimeout(function(){
+                        $('.pause span').removeClass('z-show');
+                    },500);
+                };
+                return false;
+            }
+            $('.pause a').click(function ()
+            {
+                musicControl($(this));
+            });
+            var audio = document.getElementById('audio');
+            audio.play();
+            $(document).one("touchstart",
+                    function() {
+                        audio.play()
+                    })
+        });
+    })(jQuery);
+</script>
+<script>
+    //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以
+    document.getElementById('idName').play();
+    //微信必须加入Weixin JSAPI的WeixinJSBridgeReady才能生效
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        document.getElementById('idName').play();
+        document.getElementById('video').play(); //视频自动播放
+    }, false);
+</script>
+<script type="text/javascript">
+    $(function(){
+        setTimeout('floatPic()',2000);
+
+    });
+    function floatPic()
+    {
+        var oDiv=document.getElementById('suspend');
+        var aA=oDiv.getElementsByTagName('a');
+        var i=0;
+
+        for(i=0;i<aA.length;i++)
+        {
+            aA[i].pause=1;
+            aA[i].time=null;
+            initialize(aA[i]);
+            aA[i].idx = i;
+            aA[i].onmouseover=function()
+            {
+
+                var showPicPath = document.getElementById('showPicPath');
+                showPicPath.src = 'https://p1vpeo445.bkt.clouddn.com/'+(this.idx+1)+'.jpg';
+                this.pause=0;
+            };
+            aA[i].onmouseout=function()
+            {
+                this.pause=1;
+            };
+        }
+        setInterval(starmove,40);
+        function starmove()
+        {
+            for(i=0;i<aA.length;i++)
+            {
+                if(aA[i].pause)
+                {
+                    domove(aA[i]);
+                }
+            }
+        }
+        function domove(obj)
+        {
+            if(obj.offsetTop<=-obj.offsetHeight)
+            {
+                obj.style.top=oDiv.offsetHeight+"px";
+                initialize(obj);
+            }
+            else
+            {
+                obj.style.top=obj.offsetTop-obj.ispeed+"px";
+            }
+        }
+        function initialize(obj)
+        {
+            var iLeft=parseInt(Math.random()*oDiv.offsetWidth);
+            var scale=Math.random()*1+1;
+            var iTimer=parseInt(Math.random()*1500);
+            obj.pause=0;
+
+            obj.style.fontSize=6*scale+'px';
+
+            if((iLeft-obj.offsetWidth)>0)
+            {
+                obj.style.left=iLeft-obj.offsetWidth+"px";
+            }
+            else
+            {
+                obj.style.left=iLeft+"px";
+            }
+            clearTimeout(obj.time);
+            obj.time=setTimeout(function(){
+                obj.pause=1;
+            },iTimer);
+            obj.ispeed=Math.ceil(Math.random()*4)+1;
+        }
+    };
+
+</script>
+<script type="text/javascript" src="https://p1vpeo445.bkt.clouddn.com/jweixin-1.0.0.js"></script>
+</body>
+
+
+</html>
